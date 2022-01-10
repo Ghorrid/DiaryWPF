@@ -15,7 +15,7 @@ namespace DiaryWPF
     {
         public List<Group> GetGroups()
         {
-            using (var context = new AplicationDbContex())
+            using (var context = new ApplicationDbContext())
             {
                 return context.Groups.ToList();
             }
@@ -24,7 +24,7 @@ namespace DiaryWPF
 
         public List<StudentWrapper> GetStudents(int groupId)
         {
-            using (var context =  new AplicationDbContex())
+            using (var context =  new ApplicationDbContext())
             {
                 var students = context.Students
                     .Include(x => x.Group)
@@ -42,7 +42,7 @@ namespace DiaryWPF
 
         public void DeleteStudent(int id)
         {
-            using (var context = new AplicationDbContex())
+            using (var context = new ApplicationDbContext())
             {
                 var studentToDelete = context.Students.Find(id);
                 if (studentToDelete != null) context.Students.Remove(studentToDelete);
@@ -55,7 +55,7 @@ namespace DiaryWPF
             var student = studentWrapper.ToDao();
             var ratings = studentWrapper.ToRatingDao();
 
-            using (var context = new AplicationDbContex())
+            using (var context = new ApplicationDbContext())
             {
                 UpdateStudentProperties(student, context);
                 List<Rating> studentRatingsOld = GetStudentRatings(student, context);
@@ -70,12 +70,12 @@ namespace DiaryWPF
             }
         }
 
-        private static List<Rating> GetStudentRatings(Student student, AplicationDbContex context)
+        private static List<Rating> GetStudentRatings(Student student, ApplicationDbContext context)
         {
             return context.Ratings.Where(x => x.StudentId == student.Id).ToList();
         }
 
-        private static void UpdateStudentProperties(Student student, AplicationDbContex context)
+        private static void UpdateStudentProperties(Student student, ApplicationDbContext context)
         {
             var studentToUpdate = context.Students.Find(student.Id);
 
@@ -86,7 +86,7 @@ namespace DiaryWPF
             studentToUpdate.GroupId = student.GroupId;
         }
 
-        private static void UpdateRate(Student student, List<Rating> newRatings, AplicationDbContex context, List<Rating> studentRatingsOld, Subject subject)
+        private static void UpdateRate(Student student, List<Rating> newRatings, ApplicationDbContext context, List<Rating> studentRatingsOld, Subject subject)
         {
             var subRatings = studentRatingsOld.Where(x => x.SubjectId == (int)subject)
                 .Select(x => x.Rate);
@@ -124,7 +124,7 @@ namespace DiaryWPF
             var student = studentWrapper.ToDao();
             var ratings = studentWrapper.ToRatingDao();
 
-            using (var context = new AplicationDbContex())
+            using (var context = new ApplicationDbContext())
             {
                 var dbStudent = context.Students.Add(student);
                 ratings.ForEach(x =>

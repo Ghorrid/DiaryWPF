@@ -1,0 +1,32 @@
+﻿<mah:MetroWindow x:Class="DiaryWPF.Views.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiaryWPF.Views"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Name="MessageWindowDb"
+        Title="Błąd połączenia do bazy danych" Height="250" Width="250">
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Text="Błąd połaczenia do bazy danych.
+                   Czy chcesz ustawić nowe połączenie?"
+                   TextWrapping="Wrap" Margin="5" FontSize="12" FontWeight="Bold"
+         />
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5" Height="50">
+            <Button Command="{Binding CloseSettingsCommand}" 
+                    CommandParameter="{Binding ElementName=MessageWindowDb}"
+                    Content="Anuluj" Width="100" Margin="5" />
+            <Button
+                    Command="{Binding AcceptSettingsCommand}"
+                    CommandParameter="{Binding ElementName=MessageWindowDb}"
+                    Content="OK" Width="100" Margin="5" />
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

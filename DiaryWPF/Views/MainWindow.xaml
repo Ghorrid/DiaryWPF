@@ -32,6 +32,7 @@
                 SelectedValuePath="Id"
                 Height="25" Width="150" Margin="5"/>
             <Button  Command="{Binding RefreshStudentsCommand}" Content="Odśwież" Height="25" Width="100" Margin="5"/>
+            <Button  Command="{Binding DbConfigurationCommand}" Content="Ustawienia" Height="25" Width="100" Margin="5"/>
         </StackPanel>
         <DataGrid 
             ItemsSource="{Binding Students}"

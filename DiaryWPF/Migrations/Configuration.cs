@@ -5,15 +5,15 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DiaryWPF.AplicationDbContex>
+    internal sealed class Configuration : DbMigrationsConfiguration<DiaryWPF.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DiaryWPF.AplicationDbContex";
+            ContextKey = "DiaryWPF.ApplicationDbContext";
         }
 
-        protected override void Seed(DiaryWPF.AplicationDbContex context)
+        protected override void Seed(DiaryWPF.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
