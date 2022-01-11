@@ -9,64 +9,52 @@ namespace DiaryWPF.ViewModels
     public class DbConfigurationViewModel : ViewModelBase
     {
 
-        private string _dbServerAdress ;
-
         public string DbServerAdress
         {
             get { return Settings.Default.DbServerAdress; }
-            set { _dbServerAdress = value;
+            set { 
                 Settings.Default.DbServerAdress = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _dbServerName ;
-
+ 
         public string DbServerName
         {
             get { return Settings.Default.DbServerName; }
             set
             {
-                _dbServerName = value;
                 Settings.Default.DbServerName = value;
                 OnPropertyChanged();
             }
         }
-
-        private string _dbName;
 
         public string DbName
         {
             get { return Settings.Default.DbName; }
             set
             {
-                _dbName = value;
                 Settings.Default.DbName = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _dbUserLogin;
 
         public string DbUserLogin
         {
             get { return Settings.Default.DbUserLogin; }
             set
             {
-                _dbUserLogin = value;
                 Settings.Default.DbUserLogin = value;
                 OnPropertyChanged();
             }
         }
-
-        private string _dbUserPassword;
 
         public string DbUserPassword
         {
             get { return Settings.Default.DbUserPassword; }
             set
             {
-                _dbUserPassword = value;
                 Settings.Default.DbUserPassword = value;
                 OnPropertyChanged();
             }
@@ -90,12 +78,6 @@ namespace DiaryWPF.ViewModels
 
         private void AcceptSettings(object obj)
         {
-            //_dbServerAdress = Settings.Default.DbServerAdress;
-            //_dbServerName = Settings.Default.DbServerName;
-            //_dbName = Settings.Default.DbServerName;
-            //_dbUserLogin = Settings.Default.DbUserLogin;
-            //_dbUserPassword=Settings.Default.DbUserPassword;
-
             Settings.Default.DbServerAdress = DbServerAdress;
             Settings.Default.DbServerName = DbServerName;
             Settings.Default.DbName = DbName;

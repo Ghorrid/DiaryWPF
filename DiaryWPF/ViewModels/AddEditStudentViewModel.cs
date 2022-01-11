@@ -109,7 +109,6 @@ namespace DiaryWPF.ViewModels
 
         private void AddStudent()
         {
-            // czemu przekazujemy obiekt student przy add ?
             _repository.AddStudent(Student);
         }
 

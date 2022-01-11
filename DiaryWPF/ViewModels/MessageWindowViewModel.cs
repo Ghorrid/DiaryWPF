@@ -17,25 +17,18 @@ namespace DiaryWPF.ViewModels
         {
             CloseSettingsCommand = new RelayCommand(CloseSettings);
             AcceptSettingsCommand = new RelayCommand(AcceptSettings);
-
         }
-
         private void AcceptSettings(object obj)
         {
             var dbConfigurationWindow = new DbConfigurationView();
-            //dbConfigurationWindow.Closed += AddEditStudentWindow_Closed;
             dbConfigurationWindow.Show();
-
         }
-
         private void CloseSettings(object obj)
         {
             Application.Current.Shutdown();
         }
-
         public ICommand CloseSettingsCommand { get; set; }
         public ICommand AcceptSettingsCommand { get; set; }
-
     }
 
 

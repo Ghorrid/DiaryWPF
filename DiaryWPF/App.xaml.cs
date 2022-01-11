@@ -12,7 +12,6 @@ namespace DiaryWPF
     /// </summary>
     public partial class App : Application
     {
-
         private static string _dbServerAdress = Settings.Default.DbServerAdress;
         private static string _dbServerName = Settings.Default.DbServerName;
         private static string _dbName = Settings.Default.DbName;
@@ -24,7 +23,6 @@ namespace DiaryWPF
             var metroWindow = Current.MainWindow as MetroWindow;
             metroWindow.ShowMessageAsync("Błąd", "Wystąpił nieoczekinany wyjątek. \n" + e.Exception.Message);
             e.Handled = true;
-
         }
 
         public App()
@@ -38,11 +36,8 @@ namespace DiaryWPF
             {
                 MessageWindow messageWindow = new MessageWindow();
                 messageWindow.Show();
-
             }
         }
-
-
         public static bool CheckConnection()
         {
             using (DbContext dbContext = new DbContext(GetUserConnectionString()))
@@ -52,15 +47,8 @@ namespace DiaryWPF
                 else return false;
             }
         }
-
-
-
-
-
-
         public static string GetUserConnectionString()
         {
-
             return $@"Server = ({_dbServerAdress})\{_dbServerName}; Database = {_dbName}; User Id={_dbUserLogin};Password={_dbUserPassword};";
         }
     }

@@ -24,36 +24,20 @@ namespace DiaryWPF.ViewModels
         private Repository _repository = new Repository();
         public MainViewModel()
         {
-
-            //DbServerAdress = "local";
-            //DbServerName = "SQLEXPRESS";
-            //DbName = "Diary";
-            //DbUserLogin = "diarydb";
-            //DbUserPassword = "12345";
-
             RefreshStudentsCommand = new RelayCommand(RefreshStudents, CanRefreshStudents);
             AddStudentCommand = new RelayCommand(AddEditStudent);
             EditStudentCommand = new RelayCommand(AddEditStudent, CanEditDeleteStudent);
             DeleteStudentCommand = new AsyncRelayCommand(DeleteStudent, CanEditDeleteStudent);
             DbConfigurationCommand = new RelayCommand(DbConfiguration);
             RefreshDiary();
-
             InitGroups();
-
-
-//          var con =  GetConnectionString();
-
         }
-
-
 
         public ICommand RefreshStudentsCommand { get; set; }
         public ICommand DbConfigurationCommand { get; set; }
         public ICommand AddStudentCommand { get; set; }
         public ICommand EditStudentCommand { get; set; }
-        public ICommand DeleteStudentCommand { get; set; }
-        
-
+        public ICommand DeleteStudentCommand { get; set; }      
 
         private StudentWrapper _selectedStudent;
         public StudentWrapper SelectedStudent
@@ -162,12 +146,8 @@ namespace DiaryWPF.ViewModels
 
         private void DbConfiguration(object obj)
         {
-
             var dbConfigurationWindow = new DbConfigurationView();
-            //dbConfigurationWindow.Closed += AddEditStudentWindow_Closed;
             dbConfigurationWindow.Show();
-
-
         }
 
     }
